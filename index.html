@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz con Tres Formularios</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Formularios de Ingreso de Datos</h1>
+
+        <div class="form-container">
+            <h2>Algoritmo de cuadrados medios</h2>
+            <form id="form1">
+                <div class="form-group">
+                    <label for="input1">Num:</label>
+                    <input type="text" id="input1" class="in1" maxlength="4">
+                </div>
+                <div class="form-group">
+                        <label for="">Cantidad de ri:</label>
+                    <input type="text" id="cant1" maxlength="1">
+                    </div>
+                <button id="btn1" type="submit">Calcular</button>
+                <button class="PButton" type="submit" id="pruebaDeMedias">Prueba de medias</button>
+                <button class="PButton" type="submit" id="pruebaDeVarianza">Prueba de Varianza</button>
+                <button class="PButton" type="submit" id="pruebaDeUniformidad">Prueba de uniformidad</button>
+                <h3>Numeros pseudoaletorios: </h3>
+                <h2 id="resultado1"></h2>
+                <h3>Resultado de prueba: </h3>
+                <h2 id="resultadoPruebaDeMedias"></h2>
+                <h2 id="resultadoPruebaDeVarianza"></h2>
+                <h2 id="resultadoPruebaDeUniformidad"></h2>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <h2>Algoritmo de productos medios</h2>
+            <form id="form2">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="input2"></label>Num1:</label>
+                        <input type="number" id="input2">
+                    </div>
+                    <div class="form-group">
+                        <label for="input3">Num2:</label>
+                        <input type="number" id="input3">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Cantidad de ri:</label>
+                        <input id="ri2" type="number">
+                    </div>
+                </div>
+                <button id="btn2" type="submit">Calcular</button>
+                <button class="PButton" type="submit" id="pruebaDeMedias2">Prueba de medias</button>
+                <button class="PButton" type="submit" id="pruebaDeVarianza2">Prueba de Varianza</button>
+                <button class="PButton" type="submit" id="pruebaDeUniformidad2">Prueba de uniformidad</button>
+                <h3>Numeros pseudoaletorios: </h3>
+                <h2 id="resultado2"></h2>
+                <h3>Resultado de prueba: </h3>
+                <h2 id="resultadoPruebaDeMedias2"></h2>
+                <h2 id="resultadoPruebaDeVarianza2"></h2>
+                <h2 id="resultadoPruebaDeUniformidad2"></h2>
+            </form>
+        </div>
+
+<div class="form-container">
+    <h2>Algoritmo de multiplicador constante</h2>
+    <form id="form3">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="input4">Semilla (X0):</label>
+                <input type="text" id="input4">
+            </div>
+            <div class="form-group">
+                <label for="input5">Constante (a):</label>
+                <input type="text" id="input5">
+            </div>
+            <div class="form-group">
+                <label for="ri3">Cantidad de Ri:</label>
+                <input type="text" id="ri3">
+            </div>
+        </div>
+        <button id="btn3" type="submit">Calcular</button>
+                <button class="PButton" type="submit" id="pruebaDeMedias3">Prueba de medias</button>
+                <button class="PButton" type="submit" id="pruebaDeVarianza3">Prueba de Varianza</button>
+                <button class="PButton" type="submit" id="pruebaDeUniformidad3">Prueba de uniformidad</button>
+            <h3>Numeros pseudoaletorios: </h3>
+                <h2 id="resultado2"></h2>
+                <h3>Resultado de prueba: </h3>
+                <h2 id="resultadoPruebaDeMedias2"></h2>
+                <h2 id="resultadoPruebaDeVarianza2"></h2>
+                <h2 id="resultadoPruebaDeUniformidad2"></h2>
+    </form>
+</div>
+
+
+    <script src="index.js"></script>
+</body>
+</html>
