@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algoritmo de Cuadrados Medios</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <a href="../index.html" class="back-button">← Regresar</a>
+    <div class="container">
+      <h1>Algoritmo de Cuadrados Medios</h1>
+
+      <div class="form-container">
+        <h2>Algoritmo de cuadrados medios</h2>
+        <form id="form1">
+          <div class="form-group">
+            <h3 class="subtituloP">1. Pon la semilla:</h3>
+            <label for="input1">Semilla(X0):</label>
+            <input type="text" id="input1" class="in1" maxlength="4" />
+          </div>
+          <div class="form-group">
+            <h3 class="subtituloP">2. Pon la cantidad de ri</h3>
+            <label for="">Cantidad de ri:</label>
+            <input type="text" id="cant1" maxlength="1" />
+          </div>
+          <h3 class="subtituloP">
+            3. Ejecuta la generacion de numeros pseudoaleatorios
+          </h3>
+          <button id="btn1" type="submit">Calcular</button>
+
+          <h3>Numeros pseudoaletorios:</h3>
+          <h2 id="resultado1"></h2>
+
+          <h2>=================== Pruebas ===================</h2>
+          <h3 class="subtituloP">1. Selecciona el nivel de confianza</h3>
+          <label for="confianza">Nivel de confianza:</label>
+          <select id="confianza">
+            <option value="90">90%</option>
+            <option value="95" selected>95%</option>
+            <option value="99">99%</option>
+          </select>
+
+          <h3 class="subtituloP">2. Selecciona un tipo de pueba a ejecutar:</h3>
+          <div class="botonesPruebas">
+            <button class="PButton" type="submit" id="pruebaDeMedias">
+              Prueba de medias
+            </button>
+            <button class="PButton" type="submit" id="pruebaDeVarianza">
+              Prueba de Varianza
+            </button>
+            <button class="PButton" type="submit" id="pruebaDeUniformidad">
+              Prueba de uniformidad
+            </button>
+          </div>
+
+          <p id="resultadoPruebaDeVarianza"></p>
+
+          <h3>Resultado de prueba:</h3>
+          <h2 id="resultadoPruebaDeMedias"></h2>
+          <h2 id="resultadoPruebaDeVarianza"></h2>
+          <h2 id="resultadoPruebaDeUniformidad"></h2>
+        </form>
+      </div>
+    </div>
+
+    <script src="cuadrados_medios.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstat/1.9.4/jstat.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo de Multiplicador Constante</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <a href="../index.html" class="back-button">← Regresar</a>
+    <div class="container">
+        <h1>Algoritmo de Multiplicador Constante</h1>
+
+        <div class="form-container">
+            <h2> Algoritmo de multiplicador constante </h2>
+            <form id="form3">
+                <h3 class="subtituloP">1. Pon la semilla, la constante y pon la cantidad de ri </h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="input4">Semilla(X0):</label>
+                        <input type="text" id="input4">
+                    </div>
+                    <div class="form-group">
+                        <label for="input5">Constante(a):</label>
+                        <input type="text" id="input5">
+                    </div>
+                    <div class="form-group">
+                        <label for="ri3">Cantidad de Ri:</label>
+                        <input type="text" id="ri3">
+                    </div>
+                </div>
+                <h3 class="subtituloP">3. Ejecuta la generacion de numeros pseudoaleatorios </h3>
+                <button id="btn3" type="submit">Calcular</button>
+                        
+                    <h3>Numeros pseudoaletorios: </h3>
+                        <textarea id="resultado3" rows="10" cols="60" readonly></textarea>
+
+                    <h2> =================== Pruebas =================== </h2>
+                        <h3 class="subtituloP">1. Selecciona el nivel de confianza </h3>
+                        <label for="confianza3">Nivel de confianza:</label>
+                        <select id="confianza3">
+                        <option value="90">90%</option>
+                        <option value="95" selected>95%</option>
+                        <option value="99">99%</option>
+                        </select>
+
+                        <h3 class="subtituloP">2. Selecciona un tipo de pueba a ejecutar: </h3>
+                        <div class="botonesPruebas">
+                            <button class="PButton" type="submit" id="pruebaDeMedias3">Prueba de medias</button>
+                            <button class="PButton" type="submit" id="pruebaDeVarianza3">Prueba de Varianza</button>
+                            <button class="PButton" type="submit" id="pruebaDeUniformidad3">Prueba de uniformidad</button>
+                        </div>
+                    
+                        
+                        <p id="resultadoPruebaDeVarianza3"></p>
+
+                        <h3>Resultado de prueba: </h3>
+                        <h2 id="resultadoPruebaDeMedias3"></h2>
+                        <h2 id="resultadoPruebaDeVarianza3"></h2>
+                        <h2 id="resultadoPruebaDeUniformidad3"></h2>
+            </form>
+        </div>
+    </div>
+
+    <script src="multiplicador_constante.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstat/1.9.4/jstat.min.js"></script>
+</body>
+</html>

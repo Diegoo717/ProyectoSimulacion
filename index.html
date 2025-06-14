@@ -3,162 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interfaz con Tres Formularios</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Algoritmos Generadores</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .icons-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .icon-card {
+            width: 180px;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .icon-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .icon-card:hover::before {
+            left: 100%;
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .icon-title {
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 768px) {
+            .icons-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            
+            .icon-card {
+                width: 160px;
+                height: 160px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Formularios de Ingreso de Datos</h1>
-
-        <div class="form-container">
-            <h2>Algoritmo de cuadrados medios </h2>
-            <form id="form1">
-                <div class="form-group">
-                    <h3 class="subtituloP">1. Pon la semilla: </h3>
-                    <label for="input1">Semilla(X0):</label>
-                    <input type="text" id="input1" class="in1" maxlength="4">
-                </div>
-                <div class="form-group">
-                    <h3 class="subtituloP">2. Pon la cantidad de ri </h3>
-                    <label for="">Cantidad de ri:</label>
-                    <input type="text" id="cant1" maxlength="1">
-                    </div>
-                <h3 class="subtituloP">3. Ejecuta la generacion de numeros pseudoaleatorios </h3>
-                <button id="btn1" type="submit">Calcular</button>
-                
-                <h3>Numeros pseudoaletorios: </h3>
-                <h2 id="resultado1"></h2>
-
-                <h2> =================== Pruebas =================== </h2>
-                <h3 class="subtituloP">1. Selecciona el nivel de confianza </h3>
-                <label for="confianza">Nivel de confianza:</label>
-                <select id="confianza">
-                <option value="90">90%</option>
-                <option value="95" selected>95%</option>
-                <option value="99">99%</option>
-                </select>
+        <h1>Algoritmos Generadores</h1>
+        <p class="subtitle">Selecciona un algoritmo para comenzar</p>
         
-                <h3 class="subtituloP">2. Selecciona un tipo de pueba a ejecutar: </h3>
-                <div class="botonesPruebas">
-                    <button class="PButton" type="submit" id="pruebaDeMedias">Prueba de medias</button>
-                    <button class="PButton" type="submit" id="pruebaDeVarianza">Prueba de Varianza</button>
-                    <button class="PButton" type="submit" id="pruebaDeUniformidad">Prueba de uniformidad</button>
-                </div>
-               
+        <div class="icons-container">
+            <a href="/cuadradosMedios/algoritmoCuadradosMedios.html" class="icon-card" id="cuadrados">
+                <div class="icon">⬜</div>
+                <div class="icon-title">Cuadrados<br>Medios</div>
+            </a>
+            
+            <a href="/multiplicadorConstante/algoritmoMultiplicadorConstante.html" class="icon-card" id="multiplicador">
+                <div class="icon">✖️</div>
+                <div class="icon-title">Multiplicador<br>Constante</div>
+            </a>
+            
+            <a href="/productosMedios/algoritmoProductosMedios.html" class="icon-card" id="productos">
+                <div class="icon">📊</div>
+                <div class="icon-title">Productos<br>Medios</div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Agregar efectos de sonido visual al hacer click (opcional)
+        document.querySelectorAll('.icon-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Crear efecto de ripple
+                const ripple = document.createElement('div');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
                 
-                <p id="resultadoPruebaDeVarianza"></p>
-
-                <h3>Resultado de prueba: </h3>
-                <h2 id="resultadoPruebaDeMedias"></h2>
-                <h2 id="resultadoPruebaDeVarianza"></h2>
-                <h2 id="resultadoPruebaDeUniformidad"></h2>
-            </form>
-        </div>
-
-        <div class="form-container">
-            <h2> Algoritmo de productos medios </h2>
-             <h3 class="subtituloP">1. Pon la semilla 1, semilla 2 y pon la cantidad de ri</h3>
-            <form id="form2">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="input2">Semilla(X0):</label>
-                        <input type="number" id="input2">
-                    </div>
-                    <div class="form-group">
-                        <label for="input3">Semilla(X1):</label>
-                        <input type="number" id="input3">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Cantidad de ri:</label>
-                        <input id="ri2" type="number">
-                    </div>
-                </div>
-                <h3 class="subtituloP">3. Ejecuta la generacion de numeros pseudoaleatorios </h3>
-                <button id="btn2" type="submit">Calcular</button>
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
                 
-                <h3>Numeros pseudoaletorios: </h3>
-                <h2 id="resultado2"></h2>
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
 
-               <h2> =================== Pruebas =================== </h2>
-               <h3 class="subtituloP">1. Selecciona el nivel de confianza </h3> 
-               <label for="confianza2">Nivel de confianza:</label>
-                <select id="confianza2">
-                    <option value="90">90%</option>
-                    <option value="95">95%</option>
-                    <option value="99">99%</option>
-                </select>
-
-                <h3 class="subtituloP">2. Selecciona un tipo de pueba a ejecutar: </h3>
-                <div class="botonesPruebas">
-                    <button class="PButton" type="submit" id="pruebaDeMedias2">Prueba de medias</button>
-                    <button class="PButton" type="submit" id="pruebaDeVarianza2">Prueba de Varianza</button>
-                    <button class="PButton" type="submit" id="pruebaDeUniformidad2">Prueba de uniformidad</button>
-                </div>
-               
-               
-                <p id="resultadoPruebaDeVarianza2"></p>
-
-                <h3>Resultado de prueba: </h3>
-                <h2 id="resultadoPruebaDeMedias2"></h2>
-                <h2 id="resultadoPruebaDeVarianza2"></h2>
-                <h2 id="resultadoPruebaDeUniformidad2"></h2>
-            </form>
-        </div>
-
-
-        <div class="form-container">
-            <h2> Algoritmo de multiplicador constante </h2>
-            <form id="form3">
-                <h3 class="subtituloP">1. Pon la semilla, la constante y pon la cantidad de ri </h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="input4">Semilla(X0):</label>
-                        <input type="text" id="input4">
-                    </div>
-                    <div class="form-group">
-                        <label for="input5">Constante(a):</label>
-                        <input type="text" id="input5">
-                    </div>
-                    <div class="form-group">
-                        <label for="ri3">Cantidad de Ri:</label>
-                        <input type="text" id="ri3">
-                    </div>
-                </div>
-                <h3 class="subtituloP">3. Ejecuta la generacion de numeros pseudoaleatorios </h3>
-                <button id="btn3" type="submit">Calcular</button>
-                        
-                    <h3>Numeros pseudoaletorios: </h3>
-                        <h2 id="resultado3"></h2>
-
-                    <h2> =================== Pruebas =================== </h2>
-                        <h3 class="subtituloP">1. Selecciona el nivel de confianza </h3>
-                        <label for="confianza3">Nivel de confianza:</label>
-                        <select id="confianza3">
-                        <option value="90">90%</option>
-                        <option value="95" selected>95%</option>
-                        <option value="99">99%</option>
-                        </select>
-
-                        <h3 class="subtituloP">2. Selecciona un tipo de pueba a ejecutar: </h3>
-                        <div class="botonesPruebas">
-                            <button class="PButton" type="submit" id="pruebaDeMedias3">Prueba de medias</button>
-                            <button class="PButton" type="submit" id="pruebaDeVarianza3">Prueba de Varianza</button>
-                            <button class="PButton" type="submit" id="pruebaDeUniformidad3">Prueba de uniformidad</button>
-                        </div>
-                    
-                        
-                        <p id="resultadoPruebaDeVarianza3"></p>
-
-                        <h3>Resultado de prueba: </h3>
-                        <h2 id="resultadoPruebaDeMedias3"></h2>
-                        <h2 id="resultadoPruebaDeVarianza3"></h2>
-                        <h2 id="resultadoPruebaDeUniformidad3"></h2>
-            </form>
-        </div>
-
-
-    <script src="index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstat/1.9.4/jstat.min.js"></script>
-
+        // CSS para la animación del ripple
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
