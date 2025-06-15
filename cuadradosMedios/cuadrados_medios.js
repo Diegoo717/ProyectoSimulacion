@@ -81,6 +81,57 @@ function pruebaDeMedias(numeros, nivelConfianza, elementoResultadoId) {
   document.getElementById("resultadoPruebaDeUniformidad").textContent = "";
 }
 
+function pruebaDeVarianza(numeros, nivelConfianza, elementoResultadoId) {
+  const n = numeros.length;
+  if (n === 0) {
+    document.getElementById(elementoResultadoId).textContent = "No hay números para probar";
+    return;
+  }
+
+  const media = numeros.reduce((a, b) => a + b, 0) / n;
+  const varianzaMuestral = numeros.reduce((acc, x) => acc + Math.pow(x - media, 2), 0) / n;
+
+  let alfa;
+  switch (nivelConfianza) {
+    case 90:
+      alfa = 0.10;
+      break;
+    case 95:
+      alfa = 0.05;
+      break;
+    case 99:
+      alfa = 0.01;
+      break;
+    default:
+      alfa = 0.05;
+  }
+
+  const chiCuadradoInferior = jStat.chisquare.inv(1 - alfa / 2, n - 1);
+  const chiCuadradoSuperior = jStat.chisquare.inv(alfa / 2, n - 1);
+  const varianzaEsperada = 1 / 12;
+
+  const limiteInferior = ((n - 1) * varianzaEsperada) / chiCuadradoInferior;
+  const limiteSuperior = ((n - 1) * varianzaEsperada) / chiCuadradoSuperior;
+
+  const aceptable = varianzaMuestral >= limiteInferior && varianzaMuestral <= limiteSuperior;
+  const resultado = aceptable ? "ACEPTABLE" : "NO ACEPTABLE";
+
+  const resultadoHTML = `
+    <div class="resultado-prueba">
+      <p><strong>Prueba de Varianza (Nivel de confianza ${nivelConfianza}%)</strong></p>
+      <p>Varianza muestral (S²): ${varianzaMuestral.toFixed(6)}</p>
+      <p>Límite inferior: ${limiteInferior.toFixed(6)}</p>
+      <p>Límite superior: ${limiteSuperior.toFixed(6)}</p>
+      <p class="${aceptable ? 'aceptable' : 'no-aceptable'}">Resultado: ${resultado}</p>
+    </div>
+  `;
+
+  document.getElementById(elementoResultadoId).innerHTML = resultadoHTML;
+
+  document.getElementById("resultadoPruebaDeMedias").textContent = "";
+  document.getElementById("resultadoPruebaDeUniformidad").textContent = "";
+}
+
 const btnAlgoritmoCM = document.querySelector("#btn1");
 const btnPruebaDeMedias = document.querySelector("#pruebaDeMedias");
 const btnPruebaDeVarianza = document.querySelector("#pruebaDeVarianza");
@@ -109,15 +160,14 @@ btnPruebaDeVarianza.addEventListener("click", function (e) {
   e.preventDefault();
   const numerosTexto = document.querySelector("#resultado1").textContent;
   if (numerosTexto.trim() === "") {
-    alert(
-      "Primero debes generar números pseudoaleatorios con el algoritmo de cuadrados medios"
-    );
+    alert("Primero debes generar números pseudoaleatorios con el algoritmo de cuadrados medios");
     return;
   }
   const numeros = numerosTexto.split(", ").map((num) => parseFloat(num));
   const nivelConfianza = parseInt(document.querySelector("#confianza").value);
-  document.getElementById("resultadoPruebaDeVarianza").textContent = "Prueba de varianza no implementada aún";
+  pruebaDeVarianza(numeros, nivelConfianza, "resultadoPruebaDeVarianza");
 });
+
 
 btnPruebaDeUniformidad.addEventListener("click", function (e) {
   e.preventDefault();

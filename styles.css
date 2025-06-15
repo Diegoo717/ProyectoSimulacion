@@ -93,6 +93,8 @@ button:hover {
 textarea {
   width: 80%;
   height: 15rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
 }
 
 .PButton {
@@ -129,4 +131,35 @@ textarea {
 
 .back-button:hover {
   background-color: #5a6268;
+}
+
+.resultadoNumRi{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.resultadoNumRi h3{
+  text-align: center;
+}
+
+.botonesPruebas{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.resultPrueba{
+  text-align: center;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

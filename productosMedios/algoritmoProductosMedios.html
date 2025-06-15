@@ -32,9 +32,11 @@
                 <h3 class="subtituloP">3. Ejecuta la generacion de numeros pseudoaleatorios </h3>
                 <button id="btn2" type="submit">Calcular</button>
                 
-                <h3>Numeros pseudoaletorios: </h3>
-                <textarea id="resultado2" rows="10" cols="60" readonly></textarea>
-
+                <div class="resultadoNumRi">
+                    <h3>Numeros pseudoaletorios: </h3>
+                    <textarea id="resultado2" rows="10" cols="60" readonly></textarea>
+                </div>
+                
                <h2> =================== Pruebas =================== </h2>
                <h3 class="subtituloP">1. Selecciona el nivel de confianza </h3> 
                <label for="confianza2">Nivel de confianza:</label>
@@ -52,12 +54,14 @@
                 </div>
                
                
-                <p id="resultadoPruebaDeVarianza2"></p>
-
-                <h3>Resultado de prueba: </h3>
-                <h2 id="resultadoPruebaDeMedias2"></h2>
-                <h2 id="resultadoPruebaDeVarianza2"></h2>
-                <h2 id="resultadoPruebaDeUniformidad2"></h2>
+                
+                <div class="resultPrueba">
+                    <h3>Resultado de prueba: </h3>
+                    <h4 id="resultadoPruebaDeMedias2"></h4>
+                    <h4 id="resultadoPruebaDeVarianza2"></h4>
+                    <h4 id="resultadoPruebaDeUniformidad2"></h4>
+                </div>
+                
             </form>
         </div>
     </div>

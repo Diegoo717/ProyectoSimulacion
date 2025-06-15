@@ -15,25 +15,28 @@
             <h2> Algoritmo de multiplicador constante </h2>
             <form id="form3">
                 <h3 class="subtituloP">1. Pon la semilla, la constante y pon la cantidad de ri </h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="input4">Semilla(X0):</label>
-                        <input type="text" id="input4">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="input4">Semilla(X0):</label>
+                            <input type="text" id="input4">
+                        </div>
+                        <div class="form-group">
+                            <label for="input5">Constante(a):</label>
+                            <input type="text" id="input5">
+                        </div>
+                        <div class="form-group">
+                            <label for="ri3">Cantidad de Ri:</label>
+                            <input type="text" id="ri3">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="input5">Constante(a):</label>
-                        <input type="text" id="input5">
-                    </div>
-                    <div class="form-group">
-                        <label for="ri3">Cantidad de Ri:</label>
-                        <input type="text" id="ri3">
-                    </div>
-                </div>
-                <h3 class="subtituloP">3. Ejecuta la generacion de numeros pseudoaleatorios </h3>
-                <button id="btn3" type="submit">Calcular</button>
+                    <h3 class="subtituloP">3. Ejecuta la generacion de numeros pseudoaleatorios </h3>
+                    <button id="btn3" type="submit">Calcular</button>
                         
-                    <h3>Numeros pseudoaletorios: </h3>
-                        <textarea id="resultado3" rows="10" cols="60" readonly></textarea>
+                    <div class="resultadoNumRi">
+                        <h3>Numeros pseudoaletorios: </h3>
+                        <textarea id="resultado3" rows="10" cols="60"></textarea>
+                    </div>
+                    
 
                     <h2> =================== Pruebas =================== </h2>
                         <h3 class="subtituloP">1. Selecciona el nivel de confianza </h3>
@@ -51,13 +54,13 @@
                             <button class="PButton" type="submit" id="pruebaDeUniformidad3">Prueba de uniformidad</button>
                         </div>
                     
+                        <div class="resultPrueba">
+                            <h3>Resultado de prueba: </h4>
+                            <h4 id="resultadoPruebaDeMedias3"></h4>
+                            <h4 id="resultadoPruebaDeVarianza3"></h4>
+                            <h4 id="resultadoPruebaDeUniformidad3"></h4>
+                        </div>
                         
-                        <p id="resultadoPruebaDeVarianza3"></p>
-
-                        <h3>Resultado de prueba: </h3>
-                        <h2 id="resultadoPruebaDeMedias3"></h2>
-                        <h2 id="resultadoPruebaDeVarianza3"></h2>
-                        <h2 id="resultadoPruebaDeUniformidad3"></h2>
             </form>
         </div>
     </div>

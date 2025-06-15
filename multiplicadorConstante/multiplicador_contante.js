@@ -83,6 +83,57 @@ function pruebaDeMedias(numeros, nivelConfianza, elementoResultadoId) {
   document.getElementById("resultadoPruebaDeUniformidad3").textContent = "";
 }
 
+function pruebaDeVarianza(numeros, nivelConfianza, elementoResultadoId) {
+  const n = numeros.length;
+  if (n === 0) {
+    document.getElementById(elementoResultadoId).textContent = "No hay números para probar";
+    return;
+  }
+
+  // 1. Cálculo de la varianza muestral
+  const media = numeros.reduce((sum, num) => sum + num, 0) / n;
+  const varianza = numeros.reduce((sum, num) => sum + Math.pow(num - media, 2), 0) / (n - 1);
+
+  // 2. Varianza teórica de U[0,1]
+  const varianzaEsperada = 1 / 12;
+
+  // 3. Cálculo del estadístico chi-cuadrada
+  const chiCuadrada = ((n - 1) * varianza) / varianzaEsperada;
+
+  // 4. Valores críticos para el nivel de confianza
+  let alpha;
+  switch (nivelConfianza) {
+    case 90: alpha = 0.10; break;
+    case 95: alpha = 0.05; break;
+    case 99: alpha = 0.01; break;
+    default: alpha = 0.05;
+  }
+
+  const chiCuadradaInferior = jStat.chisquare.inv(alpha / 2, n - 1);
+  const chiCuadradaSuperior = jStat.chisquare.inv(1 - alpha / 2, n - 1);
+
+  // 5. Evaluación del resultado
+  const aceptable = chiCuadrada >= chiCuadradaInferior && chiCuadrada <= chiCuadradaSuperior;
+  const resultado = aceptable ? "ACEPTABLE" : "NO ACEPTABLE";
+
+  const resultadoHTML = `
+    <div class="resultado-prueba">
+      <p><strong>Prueba de Varianza (Nivel de confianza ${nivelConfianza}%)</strong></p>
+      <p>Varianza muestral (S²): ${varianza.toFixed(6)}</p>
+      <p>Chi-cuadrada calculada: ${chiCuadrada.toFixed(6)}</p>
+      <p>Límite inferior: ${chiCuadradaInferior.toFixed(6)}</p>
+      <p>Límite superior: ${chiCuadradaSuperior.toFixed(6)}</p>
+      <p class="${aceptable ? 'aceptable' : 'no-aceptable'}">Resultado: ${resultado}</p>
+    </div>
+  `;
+
+  document.getElementById(elementoResultadoId).innerHTML = resultadoHTML;
+
+  document.getElementById("resultadoPruebaDeMedias3").textContent = "";
+  document.getElementById("resultadoPruebaDeUniformidad3").textContent = "";
+}
+
+
 document.getElementById("btn3").addEventListener("click", function(e) {
   e.preventDefault();
   algoritmoMultiplicadorConstante();
@@ -102,8 +153,16 @@ document.getElementById("pruebaDeMedias3").addEventListener("click", function(e)
 
 document.getElementById("pruebaDeVarianza3").addEventListener("click", function(e) {
   e.preventDefault();
-  document.getElementById("resultadoPruebaDeVarianza3").textContent = "Prueba de varianza no implementada aún";
+  const numerosTexto = document.getElementById("resultado3").value;
+  if (numerosTexto.trim() === "") {
+    alert("Primero debes generar números pseudoaleatorios con el algoritmo de multiplicador constante");
+    return;
+  }
+  const numeros = numerosTexto.split("\n").map(num => parseFloat(num));
+  const nivelConfianza = parseInt(document.getElementById("confianza3").value);
+  pruebaDeVarianza(numeros, nivelConfianza, "resultadoPruebaDeVarianza3");
 });
+
 
 document.getElementById("pruebaDeUniformidad3").addEventListener("click", function(e) {
   e.preventDefault();
