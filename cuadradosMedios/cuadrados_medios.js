@@ -139,8 +139,14 @@ const btnPruebaDeUniformidad = document.querySelector("#pruebaDeUniformidad");
 
 btnAlgoritmoCM.addEventListener("click", function (e) {
   e.preventDefault();
+
+  if (!validarDatosCuadradosMedios()) {
+    return;
+  }
+
   algoritmoCM();
 });
+
 
 btnPruebaDeMedias.addEventListener("click", function (e) {
   e.preventDefault();
@@ -183,3 +189,22 @@ btnPruebaDeUniformidad.addEventListener("click", function (e) {
 
   document.getElementById("resultadoPruebaDeUniformidad").textContent = "Prueba de uniformidad no implementada aún";
 });
+
+function validarDatosCuadradosMedios() {
+  const semilla = document.getElementById("input1").value.trim();
+  const cantidad = document.getElementById("cant1").value.trim();
+
+  const regex4Digitos = /^\d{4}$/;
+
+  if (!regex4Digitos.test(semilla)) {
+    alert("La semilla (X0) debe tener exactamente 4 dígitos numéricos.");
+    return false;
+  }
+
+  if (cantidad === "" || isNaN(cantidad) || parseInt(cantidad) <= 0) {
+    alert("La cantidad de números a generar debe ser mayor que cero.");
+    return false;
+  }
+
+  return true;
+}

@@ -136,8 +136,14 @@ function pruebaDeVarianza(numeros, nivelConfianza, elementoResultadoId) {
 
 document.getElementById("btn3").addEventListener("click", function(e) {
   e.preventDefault();
+
+  if (!validarDatosMultiplicadorConstante()) {
+    return;
+  }
+
   algoritmoMultiplicadorConstante();
 });
+
 
 document.getElementById("pruebaDeMedias3").addEventListener("click", function(e) {
   e.preventDefault();
@@ -168,3 +174,29 @@ document.getElementById("pruebaDeUniformidad3").addEventListener("click", functi
   e.preventDefault();
   document.getElementById("resultadoPruebaDeUniformidad3").textContent = "Prueba de uniformidad no implementada aún";
 });
+
+
+function validarDatosMultiplicadorConstante() {
+  const semilla = document.getElementById("input4").value.trim();
+  const constante = document.getElementById("input5").value.trim();
+  const cantidad = document.getElementById("ri3").value.trim();
+
+  const regex4Digitos = /^\d{4}$/;
+
+  if (!regex4Digitos.test(semilla)) {
+    alert("La semilla (X0) debe tener exactamente 4 dígitos numéricos.");
+    return false;
+  }
+
+  if (!regex4Digitos.test(constante)) {
+    alert("La constante (a) debe tener exactamente 4 dígitos numéricos.");
+    return false;
+  }
+
+  if (cantidad === "" || isNaN(cantidad) || parseInt(cantidad) <= 0) {
+    alert("La cantidad de números a generar debe ser mayor que cero.");
+    return false;
+  }
+
+  return true;
+}
